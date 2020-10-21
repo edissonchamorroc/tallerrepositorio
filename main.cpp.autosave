@@ -1,0 +1,15 @@
+#include <iostream>
+#include<fstream>
+#include<sstream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+    char nombre[12]={},texto[50]={};
+    cout << "Ingrese texto a guardar"<<endl; 
+    cin.get(texto,50);
+    
+    return 0;
+}
