@@ -13,7 +13,12 @@ int main()
     cout << "Ingrese un texto"<<endl;
     
     getline(cin,texto);
-    longitud=texto.lenght();
+    longitud=texto.length();
+    for(int i=0;i<longitud,i++)
+    {
+        ascii=texto[i];
+        binario[i]=tobin(ascii);
+    }
    /* char nombre[12]={},texto[50]={};
     cout << "Ingrese texto a guardar"<<endl; 
     cin.get(texto,50);
