@@ -84,6 +84,11 @@ int main()
                  cout<<"Clave: " <<clave<<endl;
                  encontrado=true;
              }
+             leer>>nombre;
+           }
+           if(encontrado==false)
+           {
+               cout<<"\nContrasena no existe "<<endl;
            }
            leer.close();
            break;
