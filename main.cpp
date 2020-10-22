@@ -34,7 +34,7 @@ int main()
     escribir.close();*/
 
 //*****************************************************
-   int clave, opcion;
+   int clave, opcion, comparadorclave;
    char nombre[30];
    ofstream guardar;
    ifstream leer;
@@ -46,29 +46,34 @@ int main()
        cout<<"Ingreso opcion: ";
        cin>>opcion;
        switch (opcion) {
-        case 1:{
-          cout<<"Ingrese nombre: "<<endl;
-          cin>>nombre;
-          cout<<"Ingrese clave: "<<endl;
-          cin>>clave;//cin solo lee hasta donde haya espacio
-          guardar<<nombre<<" "<<clave<<endl;
-           break;}
-       case 2:{
+         case 1:{
+              cout<<"Ingrese nombre: "<<endl;
+              cin>>nombre;
+              cout<<"Ingrese clave: "<<endl;
+              cin>>clave;//cin solo lee hasta donde haya espacio
+              guardar<<nombre<<" "<<clave<<endl;
+               break;}
+         case 2:{
+                   leer.open("fichero.txt");
+                   leer>>nombre;//>> con este solo lee hasta el primer espacio
+                   while(!leer.eof())
+                   {
+                       leer >> clave;//ojo con el dato de clave, se debe poder representar en 4 bytes
+                       cout << "Nombre: " << nombre << endl;
+                       cout << "Clave: "<< clave<<endl;
+                       cout<<endl;
+                       leer >> nombre;
+
+                   }
+
+                   leer.close();
+                   break;
+               }
+       case 3:{
            leer.open("fichero.txt");
-           leer>>nombre;//>> con este solo lee hasta el primer espacio
-           while(!leer.eof())
-           {
-               leer >> clave;
-               cout << "Nombre: " << nombre << endl;
-               cout << "Clave: "<< clave<<endl;
-               leer >> nombre;
-           }
-           leer.close();
            break;
        }
-       default: false;
-
-       }
+     }
    }
 //*****************************************************
 
