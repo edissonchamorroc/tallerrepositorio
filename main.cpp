@@ -4,7 +4,7 @@
 #include<string>
 
 using namespace std;
-int tobin(int numero);
+//int tobin(int numero);
 int main()
 {
 //    string texto;
@@ -37,10 +37,12 @@ int main()
    int clave, opcion;
    char nombre[30];
    ofstream guardar;
+   ifstream leer;
    guardar.open("fichero.txt",ios::app);//app se para en la ultima linea si dañar datos ingresados
    //con ate se para al final mientras el archivo está abierto, si se cierra se dañan los datos
    while(true){
        cout<<"1. Guardar Registro"<<endl;
+       cout<<"2. Leer Registro"<<endl;
        cout<<"Ingreso opcion: ";
        cin>>opcion;
        switch (opcion) {
@@ -48,9 +50,23 @@ int main()
           cout<<"Ingrese nombre: "<<endl;
           cin>>nombre;
           cout<<"Ingrese clave: "<<endl;
-          cin>>clave;
-          guardar<<nombre<<""<<clave<<endl;
+          cin>>clave;//cin solo lee hasta donde haya espacio
+          guardar<<nombre<<" "<<clave<<endl;
            break;}
+       case 2:{
+           leer.open("fichero.txt");
+           leer>>nombre;//>> con este solo lee hasta el primer espacio
+           while(!leer.eof())
+           {
+               leer >> clave;
+               cout << "Nombre: " << nombre << endl;
+               cout << "Clave: "<< clave<<endl;
+               leer >> nombre;
+           }
+           leer.close();
+           break;
+       }
+       default: false;
 
        }
    }
