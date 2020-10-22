@@ -71,6 +71,21 @@ int main()
                }
        case 3:{
            leer.open("fichero.txt");
+           leer>>nombre;
+           bool encontrado=false;
+           cout<<"Ingrese clave a buscar:";
+           cin>>comparadorclave;
+           while(!leer.eof())
+           {
+             leer>>clave;
+             if(clave==comparadorclave)
+             {
+                 cout<<"Nombre: " <<nombre<<endl;
+                 cout<<"Clave: " <<clave<<endl;
+                 encontrado=true;
+             }
+           }
+           leer.close();
            break;
        }
      }
