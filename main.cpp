@@ -150,10 +150,10 @@ int main()
                  cout<<"Nombre: " <<nombre<<endl;
                  cout<<"Clave: " <<clave<<endl;
                  encontrado=true;
-                 cout<<"Ingrese nuevo Nombre"<<endl;
-                 cin>>Nnombre;
+
                  cout<<"Ingrese nueva Clave"<<endl;
                  cin>>Nclave;
+                 temp<<nombre<<" "<<Nclave<<endl;
              }
              else
              {
