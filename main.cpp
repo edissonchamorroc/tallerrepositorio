@@ -37,6 +37,7 @@ int main()
    int clave, opcion, comparadorclave;
    char nombre[30];
    ofstream guardar;
+   ofstream temp;//para escritura temporal
    ifstream leer;
    guardar.open("fichero.txt",ios::app);//app se para en la ultima linea si dañar datos ingresados
    //con ate se para al final mientras el archivo está abierto, si se cierra se dañan los datos
@@ -77,7 +78,7 @@ int main()
            cin>>comparadorclave;
            while(!leer.eof())
            {
-             leer>>clave;
+             leer>>clave;//
              if(clave==comparadorclave)
              {
                  cout<<"Nombre: " <<nombre<<endl;
@@ -92,6 +93,35 @@ int main()
            }
            leer.close();
            break;
+
+       }
+       case 4:
+       {
+           leer.open("fichero.txt");
+           temp.open("temp.txt");//creacion de un nuevo archivo
+           leer>>nombre;
+           bool encontrado=false;
+           cout<<"Ingrese clave a eliminar:";
+           cin>>comparadorclave;
+           while(!leer.eof())
+           {
+             leer>>clave;//
+             if(clave==comparadorclave)
+             {
+                 cout<<"Nombre: " <<nombre<<endl;
+                 cout<<"Clave: " <<clave<<endl;
+                 encontrado=true;
+                 cout<<"Eliminado" <<clave<<endl;
+             }
+             leer>>nombre;
+           }
+           if(!encontrado)
+           {
+               cout<<"\nEl registro no existe "<<endl;
+           }
+           leer.close();
+           break;
+
        }
      }
    }
