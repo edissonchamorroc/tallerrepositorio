@@ -34,8 +34,8 @@ int main()
     escribir.close();*/
 
 //*****************************************************
-   int clave, opcion, comparadorclave;
-   char nombre[30];
+   int clave,Nclave, opcion, comparadorclave;
+   char nombre[30],Nnombre[30];
    ofstream guardar;
    ofstream temp;//para escritura temporal
    ifstream leer;
@@ -44,6 +44,8 @@ int main()
    while(true){
        cout<<"1. Guardar Registro"<<endl;
        cout<<"2. Leer Registro"<<endl;
+       cout<<"3. clave a buscar"<<endl;
+       cout<<"4. clave a eliminar"<<endl;
        cout<<"Ingreso opcion: ";
        cin>>opcion;
        switch (opcion) {
@@ -111,7 +113,11 @@ int main()
                  cout<<"Nombre: " <<nombre<<endl;
                  cout<<"Clave: " <<clave<<endl;
                  encontrado=true;
-                 cout<<"Eliminado" <<clave<<endl;
+                 cout<<"Eliminado"<<endl;
+             }
+             else
+             {
+                 temp<<nombre<<clave<<endl;
              }
              leer>>nombre;
            }
@@ -120,6 +126,51 @@ int main()
                cout<<"\nEl registro no existe "<<endl;
            }
            leer.close();
+           temp.close();
+           guardar.close();
+           remove("fichero.txt");
+           rename("temp.txt","fichero.txt");
+           guardar.open("fichero.txt",ios::app);
+           break;
+
+       }
+       case 5:
+       {
+           leer.open("fichero.txt");
+           temp.open("temp.txt");//creacion de un nuevo archivo
+           leer>>nombre;
+           bool encontrado=false;
+           cout<<"Ingrese clave a modificar:";
+           cin>>comparadorclave;
+           while(!leer.eof())
+           {
+             leer>>clave;//
+             if(clave==comparadorclave)
+             {
+                 cout<<"Nombre: " <<nombre<<endl;
+                 cout<<"Clave: " <<clave<<endl;
+                 encontrado=true;
+                 cout<<"Ingrese nuevo Nombre"<<endl;
+                 cin>>Nnombre;
+                 cout<<"Ingrese nueva Clave"<<endl;
+                 cin>>Nclave;
+             }
+             else
+             {
+                 temp<<nombre<<clave<<endl;
+             }
+             leer>>nombre;
+           }
+           if(!encontrado)
+           {
+               cout<<"\nEl registro no existe "<<endl;
+           }
+           leer.close();
+           temp.close();
+           guardar.close();
+           remove("fichero.txt");
+           rename("temp.txt","fichero.txt");
+           guardar.open("fichero.txt",ios::app);
            break;
 
        }
