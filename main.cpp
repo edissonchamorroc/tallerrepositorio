@@ -58,6 +58,8 @@ int main()
             cin>>clave;//cin solo lee hasta donde haya espacio
             guardar<<nombre<<" "<<clave<<endl;
             guardar.close();
+            system("pause");
+            system("CLS");
             break;}
         case 2:{
             leer.open("fichero.txt");
@@ -80,6 +82,8 @@ int main()
             {
                 cout<<"El archivo no existe"<<endl;
             }
+            system("pause");
+            system("CLS");
             break;
         }
         case 3:{
@@ -104,6 +108,8 @@ int main()
                 cout<<"\nContrasena no existe "<<endl;
             }
             leer.close();
+            system("pause");
+            system("CLS");
             break;
 
         }
@@ -141,6 +147,8 @@ int main()
             remove("fichero.txt");
             rename("temp.txt","fichero.txt");
             guardar.open("fichero.txt",ios::app);
+            system("pause");
+            system("CLS");
             break;
 
         }
@@ -167,7 +175,7 @@ int main()
                 }
                 else
                 {
-                    temp<<nombre<<clave<<endl;
+                    temp<<nombre<<" "<<clave<<endl;
                 }
                 leer>>nombre;
             }
@@ -181,8 +189,8 @@ int main()
             remove("fichero.txt");
             rename("temp.txt","fichero.txt");
             guardar.open("fichero.txt",ios::app);
-            system("pause");
-            system("CLS");
+            system("pause");//funcion para pausar antes de limpiar pantalla
+            system("CLS");//limpiar pantalla
             break;
 
         }
