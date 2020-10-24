@@ -46,6 +46,7 @@ int main()
        cout<<"2. Leer Registro"<<endl;
        cout<<"3. clave a buscar"<<endl;
        cout<<"4. clave a eliminar"<<endl;
+       cout<<"5. moficar clave"<<endl;
        cout<<"Ingreso opcion: ";
        cin>>opcion;
        switch (opcion) {
@@ -58,6 +59,8 @@ int main()
                break;}
          case 2:{
                    leer.open("fichero.txt");
+                   if(leer.is_open())
+                   {
                    leer>>nombre;//>> con este solo lee hasta el primer espacio
                    while(!leer.eof())
                    {
@@ -70,6 +73,11 @@ int main()
                    }
 
                    leer.close();
+                  }
+                  else
+                   {
+                       cout<<"El archivo no existe"<<endl;
+                   }
                    break;
                }
        case 3:{
@@ -171,6 +179,8 @@ int main()
            remove("fichero.txt");
            rename("temp.txt","fichero.txt");
            guardar.open("fichero.txt",ios::app);
+           _sleep(3500);
+           system("CLS");
            break;
 
        }
